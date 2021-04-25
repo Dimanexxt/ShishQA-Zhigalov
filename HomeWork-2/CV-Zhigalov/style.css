@@ -1,0 +1,42 @@
+body {
+    background-color: black;
+    
+    color: white;
+}
+
+
+.name {
+font-size: 32px;
+text-align:center;
+padding-bottom: 20px;
+}
+
+.container {
+padding: 30px;
+width: 80%;
+
+}
+
+.ava {
+    width: 400px;
+    float: left;
+}
+
+.photo {
+    width: 400px;
+}
+.ava {
+    padding: 10px;
+}
+.info {
+    text-align: center;
+}
+
+.contacts {
+float: right;
+text-align:center;
+}
+
+.number {
+    
+}
