@@ -1,0 +1,52 @@
+#/!bin/bash - 
+
+options=(
+	‘1' - при выборе опции Открываются все файлы и каталоги
+	«2" - При выборе опции показывается Время (часы, минуты, сек)и Дата в формате (%m/%d/%y)
+	‘3' при выборе опции будет появляться вопрос: 'What file do you wish to check?', долее нужно ввести файл, который будет проверяться в директории.
+	'4'ПРи выборе данной опции появится подсказка "'Please enter filename:" далее нужно будет вести имя файла. затем этот файл копируется в резервную копию
+	'5' при выборе данной опции будет завершение цикла. 
+)
+echo 'Please choose an option’ 
+select input in "${options[@]}"; do
+	case "$input" in
+		"${options[0]}")
+			ls
+			;;
+		"${options[1]}")
+			date $'+Time: %T\nDate: %D'
+			;;
+		"${options[2]}")
+			read -p 'What file do you wish to check? ' finput
+			if [[ -d $finput ]]; then
+				format='%s is a directory.\n'
+			elif [[ -f $finput ]]; then
+				format='%s is a file.\n'
+			else
+				format='%s does not exist.\n'
+			fi
+			printf "$format" "$finput"
+			;;
+		"${options[3]}")
+			read -p 'Please enter filename: ' binput
+			cp "$binput"{,.bak}
+			;;
+		"${options[4]}")
+			break
+			;;
+		*)
+			echo 'Not a valid option.'
+			;;
+	esac
+done
+
+
+
+
+Не совсем понятно Работает ли он?! И как должен работать?
+1) в Опции 3 и 4 - нужно вводить файлы с директории (она не указана)
+2) После Завершения цикла зачем то стоит Вывод строки текста: 'Not a valid option.'
+
+
+
+
